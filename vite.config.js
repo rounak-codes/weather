@@ -7,4 +7,5 @@ export default defineConfig({
     hmr:true,
   },
   plugins: [react()],
+  base: '/<repository-name>/',
 })
