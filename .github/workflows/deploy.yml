@@ -12,13 +12,13 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout code
-        uses: actions/checkout@v3  # Update to v3 for Node 16 support
+        uses: actions/checkout@v3  # Still v3, which GitHub will run on node20
 
-      # Step 2: Set up Node.js
+      # Step 2: Set up Node.js with Node 20
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Update to v3 for Node 16 support
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'  # Explicitly setting Node.js version to 20
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -39,7 +39,6 @@ jobs:
           publish_branch: gh-pages
 
       # Optional Step 6: Commit and push changes to `main`
-      # This step commits any changes in `main` back to the repository (e.g., if build artifacts are added)
       - name: Commit and push changes to main
         if: success()
         run: |
