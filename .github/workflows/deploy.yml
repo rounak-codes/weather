@@ -12,13 +12,13 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout code
-        uses: actions/checkout@v3  # Still v3, which GitHub will run on node20
+        uses: actions/checkout@v3
 
       # Step 2: Set up Node.js with Node 20
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Explicitly setting Node.js version to 20
+          node-version: '20'
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -27,7 +27,7 @@ jobs:
       # Step 4: Build the React app with the API key from secrets
       - name: Build the React app
         env:
-          REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
+          VITE_REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
         run: npm run build
 
       # Step 5: Deploy the `dist` folder to the `gh-pages` branch
@@ -35,12 +35,14 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./dist  # Corrected to use the Vite build directory
+          publish_dir: ./dist
           publish_branch: gh-pages
 
-      # Optional Step 6: Commit and push changes to `main`
+      # Optional Step 6: Commit and push changes to main
       - name: Commit and push changes to main
         if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
