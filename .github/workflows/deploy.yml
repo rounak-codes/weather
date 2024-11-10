@@ -30,12 +30,12 @@ jobs:
           REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
         run: npm run build
 
-      # Step 5: Deploy the `build` folder to the `gh-pages` branch
+      # Step 5: Deploy the `dist` folder to the `gh-pages` branch
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist  # Corrected to use the Vite build directory
           publish_branch: gh-pages
 
       # Optional Step 6: Commit and push changes to `main`
