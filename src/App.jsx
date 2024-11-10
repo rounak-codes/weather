@@ -23,7 +23,8 @@ function App() {
     <div className='w-full h-full relative'>
       <div className='text-center p-4'>
         <input
-          type='text' className='py-3 px-6 w-[700px] text-lg rounded-3xl border-gray-200 text-gray-600 placeholder:text-gray-800 focus:outline-none bg-gray-500 shadow-md' placeholder='Enter Location' value={location}
+          type='text' className='py-3 px-6 w-[700px] text-lg rounded-3xl border-gray-200 text-black
+           placeholder:text-black focus:outline-none bg-orange-500 shadow-md' placeholder='Enter Location' value={location}
           onChange={(e) => setLocation(e.target.value)}
           onKeyDownCapture={searchLocation}  // Change onKeyDownCapture to onKeyDown
         />
