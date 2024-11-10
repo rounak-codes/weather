@@ -1,12 +1,13 @@
 import './App.css';
 import { useState } from 'react';  // Import useState from React
+import { process } from 'process';  // Import process object from process package
 import axios from 'axios';  // Import axios correctly
 import Weather from './components/Weather';
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
-  const API_KEY = 'b23f4e8e75919c541aeeae2b9ba6c04a';
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`; // Fix string interpolation
 
   const searchLocation = (event) => {
