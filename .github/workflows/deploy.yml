@@ -12,11 +12,11 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Update to v3 for Node 16 support
 
       # Step 2: Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Update to v3 for Node 16 support
         with:
           node-version: '16'
 
@@ -38,7 +38,7 @@ jobs:
           publish_dir: ./build
           publish_branch: gh-pages
 
-      # Optional Step 6: Commit and Push Changes to `main`
+      # Optional Step 6: Commit and push changes to `main`
       # This step commits any changes in `main` back to the repository (e.g., if build artifacts are added)
       - name: Commit and push changes to main
         if: success()
